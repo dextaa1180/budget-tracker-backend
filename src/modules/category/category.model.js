@@ -1,5 +1,5 @@
-module.export = (sequelize, DataTypes) => {
-    const Category = sequelize.difine('Category', {
+module.exports = (sequelize, DataTypes) => {
+    const Category = sequelize.define('Category', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -13,7 +13,7 @@ module.export = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: true
         },
-        created_a: {
+        created_at: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW
@@ -24,11 +24,11 @@ module.export = (sequelize, DataTypes) => {
             defaultValue: DataTypes.NOW
         },
         tableName: 'categories',
-        timestamp: true,
+        timestamps: true,
     })
 
     Category.associate = (models) => {
-        Category.hasMany(models.transaction, { foreignKey: 'category_id', as: 'transaction'})
+        Category.hasMany(models.Transaction, { foreignKey: 'category_id', as: 'transactions'})
     }
     return Category;
 }

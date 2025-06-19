@@ -40,21 +40,21 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         sequelize,
-        modelName: 'user',
-        tableName: 'user',
-        timestamp: false,
+        modelName: 'User',
+        tableName: 'users',
+        timestamps: false,
         underscored: true
     });
 
     User.associate = (models) => {
-        User.hasMany(models, Transaction, {
+        User.hasMany(models.Transaction, {
             foreignKey: 'user_id',
             as: 'Transaction'
         });
-        User.hasMany(models, MonthlySummary, {
+        User.hasMany(models.MonthlySummary, {
             foreignKey: 'user_id',
             as: 'summary_user'
-        })
+        });
     }
     return User;
 }
