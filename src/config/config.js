@@ -3,7 +3,7 @@ dotenv.config({
   path: process.env.DOTENV_PATH || ".env",
 });
 
-const dbDialect = "mysql";
+const dbDialect = "postgres";
 
 module.exports =  {
   db: {
